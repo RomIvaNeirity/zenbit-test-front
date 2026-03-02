@@ -1,0 +1,26 @@
+.openDeals {
+  padding: 24px 24px;
+}
+
+.openDealsTitle {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 121%;
+  color: #b29f7e;
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 1440px) {
+  .openDeals {
+    padding: 50px 80px;
+  }
+
+  .openDealsTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 121%;
+    color: #b29f7e;
+    margin-bottom: 20px;
+  }
+}

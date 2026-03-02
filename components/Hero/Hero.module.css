@@ -1,0 +1,117 @@
+/* Hero background: image from public folder (e.g. /60.jpg). Use pseudo-element so content stays opaque */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background: #172234;
+  overflow: hidden;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/image60.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-family: var(--second-family);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 125%;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.heroDescription {
+  font-family: var(--font-family);
+  font-weight: 200;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.heroButton {
+  font-family: var(--second-family);
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 10px 24px;
+  width: 160px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 170%;
+  color: #fff;
+}
+
+.heroButton:hover {
+  background: rgba(178, 159, 126, 0.08);
+}
+
+@media screen and (min-width: 767px) {
+  .heroTitle {
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 125%;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .heroDescription {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #fff;
+    max-width: 822px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .hero {
+    padding: 377px 176px;
+    min-height: 1024px;
+  }
+
+  .heroTitle {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 125%;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .heroDescription {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #fff;
+    max-width: 822px;
+    margin-bottom: 30px;
+  }
+}

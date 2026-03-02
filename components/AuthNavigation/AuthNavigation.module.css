@@ -1,0 +1,74 @@
+.navigation {
+  justify-content: center;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+  gap: 10px;
+}
+
+/* Login button styles (applies to first nav item and to any element with class .loginBtn) */
+.navigation li:first-child a,
+.loginBtn {
+  box-sizing: border-box;
+  border: 1px solid #b29f7e;
+  border-radius: 5px;
+  padding: 11px 0px;
+  width: 140px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #b29f7e;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--second-family);
+  font-weight: 700;
+  line-height: 138%;
+}
+
+.navigation li:first-child a:hover,
+.loginBtn:hover {
+  background: rgba(178, 159, 126, 0.08);
+}
+
+/* Sign Up button styles (applies to second nav item and to any element with class .signupBtn) */
+.navigation li:nth-child(2) a,
+.signupBtn {
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 11px 0px;
+  width: 140px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b29f7e;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--second-family);
+  font-weight: 700;
+  line-height: 138%;
+}
+
+.navigation li:nth-child(2) a:hover,
+.signupBtn:hover {
+  filter: brightness(0.95);
+}
+
+@media screen and (min-width: 768px) {
+  .navigation li:first-child a,
+  .loginBtn {
+    width: 160px;
+  }
+
+  .navigation li:nth-child(2) a,
+  .signupBtn {
+    width: 160px;
+  }
+}

@@ -1,0 +1,84 @@
+.openDealListItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 5px;
+  padding: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+.dealInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.openDealTitle {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 170%;
+  color: #fff;
+}
+
+.dealPrice,
+.dealTiket,
+.dealYield,
+.dealDaysLeft,
+.dealSold {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 122%;
+  color: #fff;
+  background-color: #1a2536a4;
+
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .openDealListItem {
+    width: calc((100% - 20px) / 2);
+    height: 300px;
+    margin: 0;
+  }
+
+  .openDealList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .openDealListItem {
+    height: 400px;
+    padding: 20px 14px;
+  }
+
+  .dealInfo {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .openDealTitle {
+    grid-column: 1 / -1;
+    font-size: 20px;
+  }
+
+  .dealPrice,
+  .dealTiket,
+  .dealYield,
+  .dealDaysLeft,
+  .dealSold {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 122%;
+  }
+}
