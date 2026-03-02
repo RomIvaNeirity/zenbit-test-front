@@ -4,33 +4,43 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import css from "./AuthNavigation.module.css";
 
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://zenbit-test-back.onrender.com";
+
 export default function AuthNavigation() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<null | { id: number; email: string }>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Перевіряємо чи користувач залогінений
-    fetch("https://zenbit-test-back.onrender.com/auth/me", {
-      credentials: "include", // щоб кукі відправилися
+    fetch(`${BASE_URL}/auth/me`, {
+      credentials: "include",
+      cache: "no-store", // щоб кукі відправилися
     })
-      .then((res) => {
-        if (res.ok) setIsAuthenticated(true);
-        else setIsAuthenticated(false);
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data.user);
       })
-      .catch(() => setIsAuthenticated(false));
+      .finally(() => setLoading(false));
   }, []);
 
   const handleLogout = async () => {
-    await fetch("https://zenbit-test-back.onrender.com/auth/logout", {
+    await fetch("http://localhost:3000/auth/logout", {
       method: "POST",
       credentials: "include",
     });
-    setIsAuthenticated(false);
+
+    setUser(null);
   };
+
+  if (loading) return null;
 
   return (
     <nav aria-label="Main Navigation">
       <ul className={css.navigation}>
-        {isAuthenticated ? (
+        {user ? (
           <li>
             <button onClick={handleLogout} className={css.logoutButton}>
               Log Out

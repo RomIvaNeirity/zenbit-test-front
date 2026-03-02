@@ -5,15 +5,18 @@ import axios from "axios";
 import { Deal } from "@/types/deal";
 import styles from "./OpenDealsList.module.css";
 
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://zenbit-test-back.onrender.com";
+
 export default function DealsList() {
   const [deals, setDeals] = useState<Deal[]>([]);
 
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const response = await axios.get(
-          "https://zenbit-test-back.onrender.com/deals",
-        );
+        const response = await axios.get(`${BASE_URL}/deals`);
         setDeals([...response.data].sort((a, b) => a.id - b.id));
         console.log("Fetched deals:", response.data);
       } catch (error) {

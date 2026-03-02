@@ -30,22 +30,24 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const BASE_URL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:3000"
+      : "https://zenbit-test-back.onrender.com";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch(
-        "https://zenbit-test-back.onrender.com/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({ email, password }),
+      });
 
       if (!res.ok) {
         const data = await res.json();

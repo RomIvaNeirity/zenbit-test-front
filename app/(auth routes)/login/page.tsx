@@ -1,31 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://zenbit-test-back.onrender.com";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const router = useRouter();
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch(
-      "https://zenbit-test-back.onrender.com/auth/login",
-      {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      },
-    );
+    const res = await fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
     if (!res.ok) {
       setError("Invalid credentials");
       return;
     }
 
-    window.location.href = "/";
+    console.log(res);
+
+    router.push("/");
+    router.refresh();
   };
 
   return (
