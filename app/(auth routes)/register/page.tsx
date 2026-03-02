@@ -2,27 +2,6 @@
 
 import styles from "../layout.module.css";
 import { useState } from "react";
-/*
-export default function RegisterForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    console.log("Email:", form.email.value);
-    console.log("Password:", form.password.value);
-  };
-
-  return (
-    <>
-      <h1 className={styles.formTitle}>Sign Up</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Register</button>
-      </form>
-    </>
-  );
-}
- */
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -30,10 +9,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const BASE_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:3000"
-      : "https://zenbit-test-back.onrender.com";
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

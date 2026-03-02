@@ -4,10 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import css from "./AuthNavigation.module.css";
 
-const BASE_URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : "https://zenbit-test-back.onrender.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export default function AuthNavigation() {
   const [user, setUser] = useState<null | { id: number; email: string }>(null);
