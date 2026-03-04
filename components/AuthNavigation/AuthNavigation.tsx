@@ -11,8 +11,9 @@ export default function AuthNavigation() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("AuthNavigation mounted");
     // Перевіряємо чи користувач залогінений
-    fetch(`${BASE_URL}/auth/me`, {
+    fetch("/api/auth/me", {
       credentials: "include",
       cache: "no-store", // щоб кукі відправилися
     })
@@ -25,7 +26,7 @@ export default function AuthNavigation() {
   }, []);
 
   const handleLogout = async () => {
-    await fetch(`${BASE_URL}/auth/logout`, {
+    await fetch("/api/auth/logout", {
       method: "POST",
       credentials: "include",
     });
