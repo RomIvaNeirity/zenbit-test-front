@@ -19,6 +19,7 @@ export default function AuthNavigation() {
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
+        console.log(data.user);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -33,7 +34,7 @@ export default function AuthNavigation() {
   };
 
   if (loading) return null;
-
+  console.log(user);
   return (
     <nav aria-label="Main Navigation">
       <ul className={css.navigation}>
