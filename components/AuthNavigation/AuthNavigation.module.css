@@ -10,7 +10,8 @@
 
 /* Login button styles (applies to first nav item and to any element with class .loginBtn) */
 .navigation li:first-child a,
-.loginBtn {
+.loginBtn,
+.logoutButton {
   box-sizing: border-box;
   border: 1px solid #b29f7e;
   border-radius: 5px;

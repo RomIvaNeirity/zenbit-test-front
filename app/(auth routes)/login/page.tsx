@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import css from "../layout.module.css";
+import Link from "next/link";
 
 const BASE_URL =
   process.env.NODE_ENV === "development"
@@ -36,15 +38,45 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={submit}>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <p>{error}</p>}
-      <button>Login</button>
-    </form>
+    <>
+      <h1 className={css.formTitle}>Login</h1>
+      <form className={css.form} onSubmit={submit}>
+        <label htmlFor="email" className={css.formLabels}>
+          Email
+        </label>
+        <input
+          className={css.formInputs}
+          id="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label htmlFor="password" className={css.formLabels}>
+          Password
+        </label>
+        <input
+          className={css.formInputs}
+          id="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <Link href="/" className={css.resetPasswordLink}>
+          Forgot password?
+        </Link>
+        {error && <p>{error}</p>}
+        <button className={css.formButton}>Sign In</button>
+        <p className={css.signUpRemainder}>
+          Do not have account?{"  "}
+          <Link href="/register" className={css.signUpLink}>
+            Sing Up
+          </Link>
+        </p>
+      </form>
+    </>
   );
 }

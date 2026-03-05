@@ -42,7 +42,7 @@ export default function AuthNavigation() {
         {user ? (
           <li>
             <button onClick={handleLogout} className={css.logoutButton}>
-              Log Out
+              Sign Out
             </button>
           </li>
         ) : (
