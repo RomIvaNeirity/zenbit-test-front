@@ -67,7 +67,7 @@ export default function RegisterPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Link href="/" className={css.resetPasswordLink}>
+        <Link href="/reset-password-request" className={css.resetPasswordLink}>
           Forgot password?
         </Link>
         {error && <p>{error}</p>}
