@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import css from "../layout.module.css";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -78,33 +79,33 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "50px auto" }}>
-      <h1>Reset Password</h1>
-
-      {message && <p style={{ color: "red" }}>{message}</p>}
-
-      <form onSubmit={handleSubmit}>
+    <div>
+      <h1 className={css.formTitle}>Reset Password</h1>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <label htmlFor="password" className={css.formLabels}>
+          Password
+        </label>
         <input
+          className={css.formInputs}
+          id="password"
           type="password"
-          placeholder="New password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
         />
-
         <input
+          className={css.formInputs}
           type="password"
           placeholder="Confirm new password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
-          style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
         />
-
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className={css.formButton}>
           {loading ? "Updating..." : "Update Password"}
         </button>
+        {message && <p className={css.formMessage}>{message}</p>}
       </form>
     </div>
   );

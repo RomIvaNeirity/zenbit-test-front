@@ -152,6 +152,15 @@
   color: #b29f7e;
 }
 
+.formMessage {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 157%;
+  text-align: center;
+  color: #172234;
+}
+
 @media screen and (min-width: 768px) {
   .image {
     display: block;

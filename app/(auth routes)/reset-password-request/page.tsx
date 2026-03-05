@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import css from "../layout.module.css";
 
 export default function ResetPasswordRequestPage() {
   const [email, setEmail] = useState("");
@@ -34,22 +35,26 @@ export default function ResetPasswordRequestPage() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "50px auto" }}>
-      <h1>Reset Password</h1>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <h1 className={css.formTitle}>Reset password</h1>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <label htmlFor="email" className={css.formLabels}>
+          Email
+        </label>
         <input
+          className={css.formInputs}
+          id="email"
           type="email"
-          placeholder="Your email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
         />
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className={css.formButton}>
           {loading ? "Sending..." : "Send Reset Link"}
         </button>
       </form>
-      {message && <p style={{ marginTop: "10px" }}>{message}</p>}
+      {message && <p className={css.formMessage}>{message}</p>}
     </div>
   );
 }
