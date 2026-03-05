@@ -13,7 +13,7 @@ export default function AuthLayout({ children }: Props) {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href="/" className={styles.link}>
-            Back
+            Home
           </Link>
         </div>
       </header>

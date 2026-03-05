@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import css from "../layout.module.css";
 import Link from "next/link";
 
-const BASE_URL =
+/* const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://zenbit-test-back.onrender.com";
+    : "https://zenbit-test-back.onrender.com"; */
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -65,7 +65,7 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Link href="/" className={css.resetPasswordLink}>
+        <Link href="/reset-password-request" className={css.resetPasswordLink}>
           Forgot password?
         </Link>
         {error && <p>{error}</p>}

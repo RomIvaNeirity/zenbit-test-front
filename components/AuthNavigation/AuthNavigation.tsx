@@ -4,23 +4,18 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import css from "./AuthNavigation.module.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
-
 export default function AuthNavigation() {
   const [user, setUser] = useState<null | { id: number; email: string }>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("AuthNavigation mounted");
-    // Перевіряємо чи користувач залогінений
     fetch("/api/auth/me", {
       credentials: "include",
-      cache: "no-store", // щоб кукі відправилися
+      cache: "no-store",
     })
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
-        console.log(data.user);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -35,7 +30,7 @@ export default function AuthNavigation() {
   };
 
   if (loading) return null;
-  console.log(user);
+
   return (
     <nav aria-label="Main Navigation">
       <ul className={css.navigation}>
